@@ -15,6 +15,10 @@ run/main_scene="uid://bw1utims1xr52"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/size/viewport_width=256
