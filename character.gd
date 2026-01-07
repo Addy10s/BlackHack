@@ -63,9 +63,7 @@ func check_tile_data():
 			tile_map_layer.set_cell(map_pos,0,Vector2i(0,3))
 		elif type == "encounter":
 			Globals.playerPosition = global_position
-			var encounter = preload("res://gameplay.tscn").instantiate()
-			get_node(".").show_side_scene(encounter)
-			get_node(".")
+
 			get_tree().change_scene_to_file("res://gameplay.tscn")
 		else:
 			pass
