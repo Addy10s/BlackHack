@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var totalLabel = get_node("Total")
 var deck = Deck_t.new()
-
+@onready var finale = get_node("Finale")
 
 var Cards = 2
 var totalAmount = 0 
@@ -25,7 +25,7 @@ func _ready():
 
 	drawUp()
 	
-	
+
 func drawUp():
 	totalAmount = 0
 	var positioning = -30
@@ -39,7 +39,7 @@ func drawUp():
 		var atlas = AtlasTexture.new()
 		atlas.atlas = load("res://assets/Cards.png")
 		atlas.region = deck.cards[labels].get_atlas()
-		card.position = Vector2(positioning,100)
+		card.position = Vector2(positioning,60)
 
 		card.texture = atlas
 		add_child(card)
@@ -51,20 +51,27 @@ func drawUp():
 		totalLabel.text = str(totalAmount)
 		if totalAmount > 21:
 			var drawCard = get_node("hitButton")
-			totalLabel.text = "YOU LOST"
+			finale.visible = true
+			finale.text = "YOU LOST"
 			drawCard.disabled = true
-			await get_tree().create_timer(0.5).timeout
-			get_tree().quit()
+			await get_tree().create_timer(1).timeout
+			Globals.success = "FAIL"
+			get_tree().change_scene_to_file("res://map.tscn")
+
+			
 		
 		
 func hold():
 	if totalAmount == 21:
-		totalLabel.text = "PERFECT SCORE!"
+		finale.text = "PERFECT SCORE!"
+		finale.visible = true
 		await get_tree().create_timer(1).timeout
+		Globals.success = "PERFECT"
 		get_tree().change_scene_to_file("res://map.tscn")
 
-	elif totalAmount > goal:
-		totalLabel.position = Vector2(100,50)
-		totalLabel.text = "YOU GOT IT!"
+	elif totalAmount >= goal:
+		finale.text = "YOU GOT IT!"
+		finale.visible = true
+		Globals.success = "SUCCESS"
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://map.tscn")

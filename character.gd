@@ -1,19 +1,51 @@
 extends CharacterBody2D
-signal side_scene_finished
 const TILE_SIZE := 16
 @onready var ray = $RayCast2D
-
 const neutral = preload("res://assets/character.png")
 const right = preload("res://assets/characterRight.png")
 const left = preload("res://assets/characterLeft.png")
 const up = preload("res://assets/CharacterUp.png")
-func _unhandled_input(event):
-	var move_direction := Vector2.ZERO
-	if event.is_action_pressed("moveRight"): move_direction.x = 1
-	elif event.is_action_pressed("moveLeft"): move_direction.x = -1
-	elif event.is_action_pressed("moveDown"): move_direction.y = 1
-	elif event.is_action_pressed("moveUp"): move_direction.y = -1
+var is_currenly_tween: bool = false
+var input_stack = []
+
+
+func _input(event):
+	if event.is_action_pressed("moveRight"):
+		input_stack.push_back("moveRight")
+	elif event.is_action_pressed("moveLeft"):
+		input_stack.push_back("moveLeft")
+	elif event.is_action_pressed("moveUp"):
+		input_stack.push_back("moveUp")
+	elif event.is_action_pressed("moveDown"):
+		input_stack.push_back("moveDown")
+		
+	if event.is_action_released("moveRight"):
+		input_stack.erase("moveRight")
+	elif event.is_action_released("moveLeft"):
+		input_stack.erase("moveLeft")
+	elif event.is_action_released("moveUp"):
+		input_stack.erase("moveUp")
+	elif event.is_action_released("moveDown"):
+		input_stack.erase("moveDown")
 	
+
+
+func _process(_delta):
+	var move_direction := Vector2.ZERO
+	
+	
+	if input_stack.size() > 0:
+		var last_input = input_stack.back()
+		match last_input:
+			"moveRight": 
+				move_direction.x = 1
+			"moveLeft":
+				move_direction.x = -1
+			"moveDown": 
+				move_direction.y = 1
+			"moveUp": 
+				move_direction.y = -1
+
 	if move_direction != Vector2.ZERO:
 		match str(move_direction):
 			"(-1.0, 0.0)": $Sprite2D.texture = left
@@ -24,38 +56,30 @@ func _unhandled_input(event):
 
 func move_to_grid(direction: Vector2):
 	ray.target_position = direction * TILE_SIZE
-	
 	ray.force_raycast_update()
-	
-	if !ray.is_colliding():
-		global_position += direction * TILE_SIZE
-		check_tile_data()
+	if !ray.is_colliding() and !is_currenly_tween:
+		is_currenly_tween = true
+		var movementTween = create_tween()
+		var test = global_position + direction * TILE_SIZE
+		movementTween.tween_property(self, "global_position", test, 0.15)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_IN_OUT)
+		
+		movementTween.finished.connect(func():   
+			check_tile_data()
+			is_currenly_tween = false)
+		
 	else:
 		pass
 	
-func on_side_scene_finished():
-	print("test?")
-
-func _on_SideSceneLayer_child_exiting_tree(_node: Node) -> void:
-	process_mode = Node.PROCESS_MODE_PAUSABLE
-	side_scene_finished.emit()
-
-func show_side_scene(side_scene: Node) -> void:
-	print("Test Test Test did this work?")
-	get_parent().add_child(side_scene)
-	side_scene.setup("meow test")
-	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 @onready var tile_map_layer = get_parent()
 func check_tile_data():
-# 1. Get the map position (the grid coordinates)
 	var map_pos = tile_map_layer.local_to_map(global_position)
 	
-	# 2. Get the data object for that specific cell
 	var tile_data = tile_map_layer.get_cell_tile_data(map_pos)
 	
-	# 3. Check if the tile actually exists and has data
 	if tile_data:
 		var type = tile_data.get_custom_data("tileType")
 		
@@ -69,6 +93,20 @@ func check_tile_data():
 			pass
 
 
+
+func update_area():
+	var map_pos = tile_map_layer.local_to_map(global_position)
+	var tile_data = tile_map_layer.get_cell_tile_data(map_pos)
+	print(Globals.SUCCESS_t[Globals.success])
+	if tile_data:
+		if Globals.SUCCESS_t[Globals.success] in [1,2]:
+			tile_map_layer.set_cell(map_pos,0,Vector2i(3,4))
+
+
+
 func _ready() -> void:
+
 	global_position = Globals.playerPosition
-	connect("side_scene_finished", on_side_scene_finished)
+	if Globals.round > 0:
+		update_area()
+	Globals.round += 1

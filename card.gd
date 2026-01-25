@@ -14,7 +14,6 @@ func _init(suit: Suits_t, value: int) -> void:
 	self.value = value
 	
 func get_power() -> int:
-	#handle Aces
 	if self.value == 1:
 		return 11
 	elif self.value > 10:
