@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu833tflj27ia"]
 
 [ext_resource type="Script" uid="uid://df4e8b8phs0s4" path="res://gameplay.gd" id="1_n4psk"]
-[ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/Repacked - double.png" id="2_ej4tk"]
+[ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="2_ej4tk"]
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_n4psk")

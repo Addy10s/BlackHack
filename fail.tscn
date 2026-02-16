@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://blyomk5rqcvcq"]
+
+[ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="1_1jhv5"]
+[ext_resource type="Script" uid="uid://ddog8obwgbnx4" path="res://fail.gd" id="1_cxby8"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cxby8")
+
+[node name="Leave" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 81.0
+offset_right = 114.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("1_1jhv5")
+text = "LEAVE GAME"
+text_overrun_behavior = 6
+autowrap_mode = 3
+
+[node name="Again" type="Button" parent="."]
+offset_left = 142.0
+offset_top = 81.0
+offset_right = 249.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("1_1jhv5")
+text = "PLAY AGAIN"
+text_overrun_behavior = 6
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -1.0
+offset_top = 19.0
+offset_right = 255.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0.68092185, 0.46124583, 1.485957, 1)
+theme_override_fonts/font = ExtResource("1_1jhv5")
+theme_override_font_sizes/font_size = 20
+text = "THANKS FOR PLAYING!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true

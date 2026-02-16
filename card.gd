@@ -40,7 +40,6 @@ func get_value_str() -> String:
 		return 'A'
 	elif self.value == 11:
 		return 'J'
-	#finish me
 	else:
 		return str(value)
 

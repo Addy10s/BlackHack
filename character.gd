@@ -89,6 +89,10 @@ func check_tile_data():
 			Globals.playerPosition = global_position
 
 			get_tree().change_scene_to_file("res://gameplay.tscn")
+		elif type == "shop":
+			Globals.playerPosition = global_position
+
+			get_tree().change_scene_to_file("res://shop.tscn")
 		else:
 			pass
 
@@ -97,16 +101,29 @@ func check_tile_data():
 func update_area():
 	var map_pos = tile_map_layer.local_to_map(global_position)
 	var tile_data = tile_map_layer.get_cell_tile_data(map_pos)
-	print(Globals.SUCCESS_t[Globals.success])
 	if tile_data:
 		if Globals.SUCCESS_t[Globals.success] in [1,2]:
 			tile_map_layer.set_cell(map_pos,0,Vector2i(3,4))
+			Globals.tokens += Globals.round
 
 
 
 func _ready() -> void:
 
+	for i in Globals.lives:
+		var life_hud = TextureRect.new()
+		life_hud.global_position = Vector2i(16 * i - 128, -64)
+		life_hud.texture = load("res://assets/lives.png")
+		$Camera2D.add_child(life_hud)
+
+	if Globals.lives <= 0:
+		get_tree().change_scene_to_file("res://map.tscn")
+
+	
 	global_position = Globals.playerPosition
 	if Globals.round > 0:
 		update_area()
-	Globals.round += 1
+		
+		
+	if Globals.SUCCESS_t.get(Globals.success, -1) != 2:
+		Globals.round += 1

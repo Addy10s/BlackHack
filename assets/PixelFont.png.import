@@ -3,12 +3,12 @@
 importer="font_data_image"
 type="FontFile"
 uid="uid://bn05pg63nlltb"
-path="res://.godot/imported/Repacked - double.png-940c0c49dafae31962cb2780d72dce19.fontdata"
+path="res://.godot/imported/PixelFont.png-ac85994bf317215f1756220186907574.fontdata"
 
 [deps]
 
-source_file="res://assets/Repacked - double.png"
-dest_files=["res://.godot/imported/Repacked - double.png-940c0c49dafae31962cb2780d72dce19.fontdata"]
+source_file="res://assets/PixelFont.png"
+dest_files=["res://.godot/imported/PixelFont.png-ac85994bf317215f1756220186907574.fontdata"]
 
 [params]
 
