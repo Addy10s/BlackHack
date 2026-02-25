@@ -1,7 +1,7 @@
 extends Node
 class_name Card_t
 
-enum Suits_t { HEARTS, DIAMONDS, SPADES, CLUBS }
+enum Suits_t { HEARTS, DIAMONDS, SPADES, CLUBS, GOLD }
 
 var suit: Suits_t
 var value: int
@@ -31,6 +31,8 @@ func get_suit_str() -> String:
 		return 's'
 	elif self.suit == Suits_t.CLUBS:
 		return 'c'
+	elif self.suit == Suits_t.GOLD:
+		return 'g'
 	else:
 		assert(self.suit in Suits_t)
 		return ""

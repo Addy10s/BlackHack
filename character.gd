@@ -104,7 +104,7 @@ func update_area():
 	if tile_data:
 		if Globals.SUCCESS_t[Globals.success] in [1,2]:
 			tile_map_layer.set_cell(map_pos,0,Vector2i(3,4))
-			Globals.tokens += Globals.round
+			Globals.tokens += Globals.round + 4
 
 
 

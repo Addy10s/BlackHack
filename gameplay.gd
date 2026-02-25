@@ -3,7 +3,7 @@ extends Node2D
 @onready var totalLabel = get_node("Total")
 
 @onready var finale = get_node("Finale")
-var deck = Deck_t.new()
+var deck = Globals.deck
 var Cards = 2
 var totalAmount = 0 
 var goal = Globals.round + 13
@@ -67,8 +67,9 @@ func hold():
 		get_tree().change_scene_to_file("res://map.tscn")
 
 	elif totalAmount >= goal:
-		finale.text = "YOU GOT IT!"
-		finale.visible = true
-		Globals.success = "SUCCESS"
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://map.tscn")
+		if totalAmount <= max_power:
+			finale.text = "YOU GOT IT!"
+			finale.visible = true
+			Globals.success = "SUCCESS"
+			await get_tree().create_timer(1).timeout
+			get_tree().change_scene_to_file("res://map.tscn")
