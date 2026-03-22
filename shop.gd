@@ -59,6 +59,9 @@ func add_cards():
 	
 func buy( price, item ):
 	if Globals.tokens >= price:
+		var CorrectSound = preload("res://assets/successfulBuy.wav")
+		$AudioStreamPlayer.stream = CorrectSound
+		$AudioStreamPlayer.play()
 		match item:
 			"lives":
 				Globals.tokens -= price
@@ -74,6 +77,10 @@ func buy( price, item ):
 				Globals.deck.append(realCard)
 		var coin_label = get_node("coinLabel") 
 		coin_label.text = str(Globals.tokens)
+	else:
+		var incorrectSound = preload("res://assets/unsuccessfulBuy.wav")
+		$AudioStreamPlayer.stream = incorrectSound
+		$AudioStreamPlayer.play()
 		
 	
 	

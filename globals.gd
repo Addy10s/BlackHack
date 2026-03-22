@@ -7,5 +7,5 @@ var success
 var round = 0
 var max_power = 21
 var lives = 3
-var tokens = 0
+var tokens = 100
 var deck = Deck_t.new()

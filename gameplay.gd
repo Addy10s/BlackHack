@@ -5,13 +5,12 @@ extends Node2D
 @onready var finale = get_node("Finale")
 var deck = Globals.deck
 var Cards = 2
+var current_cards = 0
 var totalAmount = 0 
 var goal = Globals.round + 13
 var max_power = Globals.max_power
+var positioning = -10
 
-func _button_pressed():
-	Cards += 1
-	drawUp()
 
 func _ready():
 	var goalLabel = get_node("Goal")
@@ -24,52 +23,86 @@ func _ready():
 	goalLabel.text = str(goal)
 
 	drawUp()
-	
+
+func _button_pressed():
+	Cards += 1
+	drawUp()
+
 
 func drawUp():
-	totalAmount = 0
-	var positioning = -30
+	var Diff = Cards - current_cards
+	current_cards += Diff
 
-
-	for labels in Cards:
-		positioning += 45
+	for labels in Diff:
+		labels += current_cards
+		positioning += 35
 		
-		var card = Sprite2D.new()
+		var card = TextureButton.new()
 		var atlas = AtlasTexture.new()
 		atlas.atlas = load("res://assets/Cards.png")
 		atlas.region = deck.cards[labels].get_atlas()
-		card.position = Vector2(positioning,60)
+		card.texture_normal = preload("res://assets/cardBack.png")
+		var movementTween = create_tween()
+		card.position = Vector2(128,24)
+		movementTween.tween_property(card, "global_position", Vector2(positioning,45), 0.15)\
+		.set_trans(Tween.TRANS_LINEAR)\
+		.set_ease(Tween.EASE_IN_OUT)
+		movementTween.finished.connect(func():card.texture_normal = atlas)
+		var value = deck.cards[labels].get_power()
 
-		card.texture = atlas
+		
 		add_child(card)
-
-
-		totalAmount += deck.cards[labels].get_power()
+		totalAmount += value
 		totalLabel.text = str(totalAmount)
+
+		if deck.cards[labels].suit == Card_t.Suits_t.GOLD:
+			card.pressed.connect(flipOver.bind(card,value))
+		
+		
 		if totalAmount > max_power:
-			var drawCard = get_node("hitButton")
-			finale.visible = true
-			finale.text = "YOU LOST"
-			drawCard.disabled = true
-			await get_tree().create_timer(1).timeout
-			Globals.success = "FAIL"
-			Globals.lives -= 1
-			get_tree().change_scene_to_file("res://map.tscn")
+			round_end("FAIL")
 
 
+func flipOver(sprite,value):
+	sprite.texture_normal = preload("res://assets/cardBack.png")
+	totalAmount -= value
+	totalLabel.text = str(totalAmount)
 
 func hold():
 	if totalAmount == max_power:
-		finale.text = "PERFECT SCORE!"
-		finale.visible = true
-		await get_tree().create_timer(1).timeout
-		Globals.success = "PERFECT"
-		get_tree().change_scene_to_file("res://map.tscn")
+		round_end("PERFECT")
 
 	elif totalAmount >= goal:
-		if totalAmount <= max_power:
-			finale.text = "YOU GOT IT!"
+		round_end("SUCCESS")
+
+			
+			
+func hide_ui():
+	get_node("Goal").visible = false
+	get_node("Total").visible = false
+	get_node("hitButton").visible = false
+	get_node("holdButton").visible = false
+	get_node("Label").visible = false
+	get_node("Label2").visible = false
+
+
+
+func round_end(ending_type):
+			var endText
+			match ending_type:
+				"FAIL":
+					endText = "YOU LOST"
+					Globals.lives -= 1
+				"SUCCESS":
+					endText = "YOU GOT IT!"
+				"PERFECT":
+					endText = "PERFECT SCORE!"
+			var drawCard = get_node("hitButton")
 			finale.visible = true
-			Globals.success = "SUCCESS"
-			await get_tree().create_timer(1).timeout
+			$AnimationPlayer.play("fade_out")
+			hide_ui()
+			finale.text = endText
+			drawCard.disabled = true
+			await get_tree().create_timer(2).timeout
+			Globals.success = ending_type
 			get_tree().change_scene_to_file("res://map.tscn")
