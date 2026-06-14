@@ -87,8 +87,12 @@ func check_tile_data():
 			tile_map_layer.set_cell(map_pos,0,Vector2i(0,3))
 		elif type == "encounter":
 			Globals.playerPosition = global_position
-
 			get_tree().change_scene_to_file("res://gameplay.tscn")
+		elif type == "coin":
+			Globals.tokens += 1
+			tile_map_layer.set_cell(map_pos,0, Vector2i(1,1))
+			$Camera2D/coinLabel.text = str(Globals.tokens)
+
 		elif type == "shop":
 			Globals.playerPosition = global_position
 
@@ -104,7 +108,7 @@ func update_area():
 	if tile_data:
 		if Globals.SUCCESS_t[Globals.success] in [1,2]:
 			tile_map_layer.set_cell(map_pos,0,Vector2i(3,4))
-			Globals.tokens += Globals.round + 4
+			#Globals.tokens += Globals.round + 4
 
 
 
@@ -127,3 +131,5 @@ func _ready() -> void:
 		
 	if Globals.SUCCESS_t.get(Globals.success, -1) != 2:
 		Globals.round += 1
+	var coin_label = get_node("Camera2D/coinLabel") 
+	coin_label.text = str(Globals.tokens)

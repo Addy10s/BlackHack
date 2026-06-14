@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5u0e71kwoxsr"]
+[gd_scene format=3 uid="uid://b5u0e71kwoxsr"]
 
 [ext_resource type="Script" uid="uid://vhb2etlowsg0" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="1_viryw"]
 [ext_resource type="Texture2D" uid="uid://dq4ok611ibb5l" path="res://assets/coin.png" id="3_blqjs"]
 [ext_resource type="Texture2D" uid="uid://f256qa40lrmr" path="res://assets/shop.png" id="4_fgaav"]
 
-[node name="Shop" type="Node2D"]
+[node name="Shop" type="Node2D" unique_id=159036597]
 script = ExtResource("1_e7rdd")
 
-[node name="leaveShop" type="Button" parent="."]
+[node name="leaveShop" type="Button" parent="." unique_id=174911491]
 z_index = 6
 offset_left = 113.0
 offset_top = 1.0
@@ -19,7 +19,7 @@ theme_override_font_sizes/font_size = 14
 text = "EXIT SHOP"
 flat = true
 
-[node name="coinImage" type="TextureRect" parent="."]
+[node name="coinImage" type="TextureRect" parent="." unique_id=321305823]
 offset_left = 6.0
 offset_top = 1.0
 offset_right = 30.0
@@ -27,7 +27,7 @@ offset_bottom = 24.0
 texture = ExtResource("3_blqjs")
 stretch_mode = 4
 
-[node name="coinLabel" type="Label" parent="."]
+[node name="coinLabel" type="Label" parent="." unique_id=221807669]
 offset_left = 30.0
 offset_top = 3.0
 offset_right = 91.0
@@ -38,7 +38,7 @@ text = "0"
 vertical_alignment = 1
 uppercase = true
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1383638975]
 process_mode = 4
 z_index = -14
 offset_right = 40.0
@@ -48,4 +48,4 @@ mouse_behavior_recursive = 2
 texture = ExtResource("4_fgaav")
 metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=164472458]

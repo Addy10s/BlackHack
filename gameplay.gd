@@ -50,7 +50,6 @@ func drawUp():
 		movementTween.finished.connect(func():card.texture_normal = atlas)
 		var value = deck.cards[labels].get_power()
 
-		
 		add_child(card)
 		totalAmount += value
 		totalLabel.text = str(totalAmount)
@@ -84,7 +83,7 @@ func hide_ui():
 	get_node("holdButton").visible = false
 	get_node("Label").visible = false
 	get_node("Label2").visible = false
-
+	get_node("CardBack").visible = false
 
 
 func round_end(ending_type):
@@ -95,13 +94,17 @@ func round_end(ending_type):
 					Globals.lives -= 1
 				"SUCCESS":
 					endText = "YOU GOT IT!"
+				
+					var tokenAddAmnt = Globals.round + 4
+					Globals.tokens += tokenAddAmnt
+					get_node("Finale/tokenUps").text = "+${0}".format({"0": str(tokenAddAmnt)})
 				"PERFECT":
 					endText = "PERFECT SCORE!"
 			var drawCard = get_node("hitButton")
 			finale.visible = true
 			$AnimationPlayer.play("fade_out")
 			hide_ui()
-			finale.text = endText
+			get_node("Finale/finalText").text = endText
 			drawCard.disabled = true
 			await get_tree().create_timer(2).timeout
 			Globals.success = ending_type

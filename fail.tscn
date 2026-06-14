@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://blyomk5rqcvcq"]
+[gd_scene format=3 uid="uid://blyomk5rqcvcq"]
 
 [ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="1_1jhv5"]
 [ext_resource type="Script" uid="uid://ddog8obwgbnx4" path="res://fail.gd" id="1_cxby8"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=136264555]
 script = ExtResource("1_cxby8")
 
-[node name="Leave" type="Button" parent="."]
+[node name="Leave" type="Button" parent="." unique_id=996636046]
 offset_left = 3.0
 offset_top = 81.0
 offset_right = 114.0
@@ -16,7 +16,7 @@ text = "LEAVE GAME"
 text_overrun_behavior = 6
 autowrap_mode = 3
 
-[node name="Again" type="Button" parent="."]
+[node name="Again" type="Button" parent="." unique_id=235671886]
 offset_left = 142.0
 offset_top = 81.0
 offset_right = 249.0
@@ -26,7 +26,7 @@ text = "PLAY AGAIN"
 text_overrun_behavior = 6
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1717237705]
 visible = false
 offset_left = -1.0
 offset_top = 19.0
