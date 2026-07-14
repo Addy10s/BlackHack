@@ -19,3 +19,5 @@ func _init() -> void:
 
 func shuffle():
 	cards.shuffle()
+func iter():
+	return cards.size()

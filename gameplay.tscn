@@ -2,7 +2,95 @@
 
 [ext_resource type="Script" uid="uid://df4e8b8phs0s4" path="res://gameplay.gd" id="1_n4psk"]
 [ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="2_ej4tk"]
+[ext_resource type="StyleBox" uid="uid://ds0nu587jypip" path="res://button.tres" id="3_cbffv"]
 [ext_resource type="Texture2D" uid="uid://cccyv1yxnw81c" path="res://assets/cardBack.png" id="3_oe8ih"]
+[ext_resource type="Texture2D" uid="uid://dq4ok611ibb5l" path="res://assets/coin.png" id="5_cbffv"]
+[ext_resource type="Shader" uid="uid://b885787ra4egg" path="res://blur.gdshader" id="5_smepj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ihbs"]
+bg_color = Color(0, 0.5116318, 0.17280528, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.17236415, 0.34208682, 0.25209352, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qy1k"]
+bg_color = Color(1.732707e-06, 0.7311291, 0.2617171, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24603674, 0.50615644, 0.35479543, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smepj"]
+bg_color = Color(0, 0.5116318, 0.17280528, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.17236415, 0.34208682, 0.25209352, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m7cd"]
+bg_color = Color(1.732707e-06, 0.7311291, 0.2617171, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24603674, 0.50615644, 0.35479543, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n40r"]
+bg_color = Color(0.9327821, 0.033690274, 9.62615e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3652786, 0.026697677, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0.35277417, 0.070839606, 0, 0.6)
+shadow_size = 4
 
 [sub_resource type="Animation" id="Animation_oe8ih"]
 length = 0.001
@@ -210,6 +298,58 @@ _data = {
 &"fade_out": SubResource("Animation_ej4tk")
 }
 
+[sub_resource type="Shader" id="Shader_xuee5"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.6.3.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix,unshaded;
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smepj"]
+shader = SubResource("Shader_xuee5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbffv"]
+bg_color = Color(0.15686275, 0.011764706, 0.23529412, 0.83137256)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.17308949, 0.003139739, 0.24916194, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 14
+shadow_color = Color(0.11372549, 0.13333334, 0.6509804, 0.12156863)
+shadow_size = 1
+
+[sub_resource type="Theme" id="Theme_fbudy"]
+Panel/styles/panel = SubResource("StyleBoxFlat_cbffv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbffv"]
+shader = ExtResource("5_smepj")
+shader_parameter/blur_amount = 2.46800011723
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbudy"]
+content_margin_left = 4.0
+content_margin_right = 1.0
+bg_color = Color(0.7663097, 0.17165938, 0.2092376, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
 [node name="Gameplay" type="Node2D" unique_id=654875177]
 script = ExtResource("1_n4psk")
 
@@ -220,9 +360,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 16.0
 offset_top = 16.0
-offset_right = 64.0
+offset_right = 48.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -238,16 +377,16 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 192.0
+offset_left = 152.0
 offset_top = 16.0
-offset_right = 240.0
+offset_right = 248.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_ej4tk")
 theme_override_font_sizes/font_size = 18
-text = "11"
+text = "11/21"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -256,16 +395,18 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 95.0
-offset_top = 85.0
-offset_right = 154.0
-offset_bottom = 105.0
+offset_left = 3.0
+offset_top = 106.0
+offset_right = 62.0
+offset_bottom = 126.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_ej4tk")
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ihbs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1qy1k")
 text = "HIT!"
 icon_alignment = 1
 
@@ -274,22 +415,29 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 88.0
+offset_left = 197.0
 offset_top = 105.0
-offset_right = 160.0
-offset_bottom = 128.0
+offset_right = 253.0
+offset_bottom = 126.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("2_ej4tk")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_smepj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0m7cd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3n40r")
+disabled = true
 text = "HOLD"
 icon_alignment = 1
 
+[node name="group" type="Node" parent="." unique_id=808235005]
+
 [node name="Label2" type="Label" parent="." unique_id=2045905202]
-offset_left = 192.0
-offset_right = 240.0
+offset_left = 178.0
+offset_right = 226.0
 offset_bottom = 16.0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_ej4tk")
@@ -299,8 +447,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=404836542]
-offset_left = 16.0
-offset_right = 64.0
+offset_right = 48.0
 offset_bottom = 18.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_ej4tk")
@@ -316,24 +463,31 @@ libraries/ = SubResource("AnimationLibrary_oe8ih")
 position = Vector2(128, 24)
 texture = ExtResource("3_oe8ih")
 
-[node name="Finale" type="ColorRect" parent="." unique_id=2098784781]
+[node name="Finale" type="Panel" parent="." unique_id=478430239]
 visible = false
-z_index = 20
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 240.0
-offset_bottom = 112.0
-color = Color(0.62061715, 0.5416762, 0.73234993, 1)
+z_index = 67
+material = SubResource("ShaderMaterial_smepj")
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 244.0
+offset_bottom = 113.0
+focus_mode = 2
+theme = SubResource("Theme_fbudy")
+
+[node name="ColorRect" type="ColorRect" parent="Finale" unique_id=433062897]
+material = SubResource("ShaderMaterial_cbffv")
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 96.0
 
 [node name="finalText" type="Label" parent="Finale" unique_id=223777109]
 z_index = 546
 layout_mode = 0
-offset_left = 16.0
 offset_top = -8.0
-offset_right = 216.0
+offset_right = 232.0
 offset_bottom = 35.0
 theme_override_fonts/font = ExtResource("2_ej4tk")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 13
 text = "you did it!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -343,15 +497,39 @@ uppercase = true
 [node name="tokenUps" type="Label" parent="Finale" unique_id=202772116]
 z_index = 546
 layout_mode = 0
+offset_left = 48.0
 offset_top = 40.0
-offset_right = 80.0
-offset_bottom = 83.0
+offset_right = 184.0
+offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("2_ej4tk")
-theme_override_font_sizes/font_size = 15
-text = "+$"
+theme_override_font_sizes/font_size = 12
+text = "+115 coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
+[node name="coinImage" type="TextureRect" parent="Finale/tokenUps" unique_id=554830650]
+layout_mode = 0
+offset_left = -124.0
+offset_top = 37.0
+offset_right = -100.0
+offset_bottom = 60.0
+texture = ExtResource("5_cbffv")
+stretch_mode = 4
+
 [node name="Polygon2D" type="Polygon2D" parent="Finale" unique_id=355438230]
+
+[node name="Okie" type="Button" parent="Finale" unique_id=1542802514]
+z_index = 80
+layout_mode = 0
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("2_ej4tk")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = ExtResource("3_cbffv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fbudy")
+text = "OKIE!"
+icon_alignment = 1
