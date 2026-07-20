@@ -8,8 +8,9 @@
 ![GitHub License](https://img.shields.io/github/license/addy10s/blackhack
 )
 ![test](https://hackatime.hackclub.com/api/v1/badge/U08R4SW3FU7/Addy10s/BlackHack)
-## Welcome to BlackHack, the blackjack-based dungeon crawler!
 
+## Welcome to BlackHack, the blackjack-based dungeon crawler!
+## To Play -> http://github.com/Addy10s/BlackHack/releases
 ## Gameplay
 In the map, move around with WASD, walking through open doors to close them, and if you walk on any red-bordered tile, it's an encounter, whether an upgrade shop, a trash can, a battle, or the boss.
 ### In standard Encounters:
