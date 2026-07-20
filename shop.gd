@@ -85,7 +85,7 @@ func buy( price, item ):
 	
 	
 func exit():
-	Globals.round -= 1
+	#Globals.round -= 1
 	Globals.success = "PERFECT"
 	get_tree().change_scene_to_file("res://map.tscn")
 	

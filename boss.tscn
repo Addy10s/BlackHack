@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://b8cx11dywu2yk"]
+
+[ext_resource type="Texture2D" uid="uid://bs8453tdmfeht" path="res://assets/boss ui.png" id="1_6xxrv"]
+[ext_resource type="Script" uid="uid://uuj008xrcici" path="res://boss.gd" id="1_lnbgr"]
+[ext_resource type="Texture2D" uid="uid://cccyv1yxnw81c" path="res://assets/cardBack.png" id="2_skx2t"]
+[ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="4_o1i15"]
+[ext_resource type="Shader" uid="uid://b885787ra4egg" path="res://blur.gdshader" id="5_kvofc"]
+[ext_resource type="Texture2D" uid="uid://dq4ok611ibb5l" path="res://assets/coin.png" id="6_ef0k6"]
+[ext_resource type="StyleBox" uid="uid://ds0nu587jypip" path="res://button.tres" id="7_ry61v"]
+
+[sub_resource type="Shader" id="Shader_xuee5"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.6.3.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix,unshaded;
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kles1"]
+shader = SubResource("Shader_xuee5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbffv"]
+bg_color = Color(0.6784314, 0.011764706, 0.1254902, 0.83137256)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.49411765, 0.003921569, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 14
+shadow_color = Color(0.11372549, 0.13333334, 0.6509804, 0.12156863)
+shadow_size = 1
+
+[sub_resource type="Theme" id="Theme_etj48"]
+Panel/styles/panel = SubResource("StyleBoxFlat_cbffv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3lj5"]
+shader = ExtResource("5_kvofc")
+shader_parameter/blur_amount = 2.46800011723
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s1j2"]
+content_margin_left = 4.0
+content_margin_right = 1.0
+bg_color = Color(0.7663097, 0.17165938, 0.2092376, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvofc"]
+bg_color = Color(0, 0.5116318, 0.17280528, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.17236415, 0.34208682, 0.25209352, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ef0k6"]
+bg_color = Color(1.732707e-06, 0.7311291, 0.2617171, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24603674, 0.50615644, 0.35479543, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 15
+expand_margin_left = 1.0
+shadow_color = Color(0, 0.23582941, 9.62615e-08, 0.6)
+shadow_size = 4
+
+[node name="Boss" type="Node2D" unique_id=1055222015]
+script = ExtResource("1_lnbgr")
+
+[node name="BossUi" type="Sprite2D" parent="." unique_id=358186878]
+position = Vector2(128, 64)
+texture = ExtResource("1_6xxrv")
+
+[node name="CardBack" type="Sprite2D" parent="." unique_id=706983296]
+position = Vector2(128, 64)
+texture = ExtResource("2_skx2t")
+
+[node name="SelfScore" type="Label" parent="." unique_id=1947897710]
+offset_left = 160.0
+offset_top = 53.0
+offset_right = 211.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_o1i15")
+text = "NUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BossScore" type="Label" parent="." unique_id=1505166549]
+offset_left = 48.0
+offset_top = 53.0
+offset_right = 99.0
+offset_bottom = 76.0
+rotation = 3.1415927
+pivot_offset = Vector2(24, 11)
+theme_override_fonts/font = ExtResource("4_o1i15")
+text = "NUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="group" type="Node" parent="." unique_id=2041243536]
+
+[node name="Finale" type="Panel" parent="." unique_id=1612884957]
+visible = false
+z_index = 67
+material = SubResource("ShaderMaterial_kles1")
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 244.0
+offset_bottom = 113.0
+focus_mode = 2
+theme = SubResource("Theme_etj48")
+
+[node name="ColorRect" type="ColorRect" parent="Finale" unique_id=184671847]
+material = SubResource("ShaderMaterial_h3lj5")
+layout_mode = 0
+offset_left = -12.0
+offset_top = -17.0
+offset_right = 244.0
+offset_bottom = 111.0
+
+[node name="finalText" type="Label" parent="Finale" unique_id=1991597481]
+z_index = 546
+layout_mode = 0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 236.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("4_o1i15")
+theme_override_font_sizes/font_size = 16
+text = "you did it!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="tokenUps" type="Label" parent="Finale" unique_id=169251460]
+visible = false
+z_index = 546
+layout_mode = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 184.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_o1i15")
+theme_override_font_sizes/font_size = 12
+text = "+115 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="coinImage" type="TextureRect" parent="Finale/tokenUps" unique_id=25680452]
+visible = false
+layout_mode = 0
+offset_left = -108.0
+offset_top = 23.0
+offset_right = -84.0
+offset_bottom = 46.0
+texture = ExtResource("6_ef0k6")
+stretch_mode = 4
+
+[node name="Polygon2D" type="Polygon2D" parent="Finale" unique_id=940824021]
+
+[node name="Okie" type="Button" parent="Finale" unique_id=772396988]
+z_index = 80
+layout_mode = 0
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("4_o1i15")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = ExtResource("7_ry61v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1s1j2")
+text = "OKIE!"
+icon_alignment = 1
+
+[node name="hitButton" type="Button" parent="." unique_id=577453151]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 99.0
+offset_top = 105.0
+offset_right = 158.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_o1i15")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_kvofc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ef0k6")
+text = "HIT!"
+icon_alignment = 1
+
+[node name="CardBack2" type="Sprite2D" parent="." unique_id=16548731]
+visible = false
+position = Vector2(24, 94)
+texture = ExtResource("2_skx2t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1181080281]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=513687935]

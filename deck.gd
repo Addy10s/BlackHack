@@ -18,6 +18,7 @@ func _init() -> void:
 	self.create_default_deck()
 
 func shuffle():
-	cards.shuffle()
+	for i in cards:
+		cards.shuffle()
 func iter():
 	return cards.size()

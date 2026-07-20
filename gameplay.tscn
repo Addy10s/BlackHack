@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://df4e8b8phs0s4" path="res://gameplay.gd" id="1_n4psk"]
 [ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="2_ej4tk"]
+[ext_resource type="Texture2D" uid="uid://cd2gs14mb6o8t" path="res://assets/gameplaybg.png" id="2_fbudy"]
 [ext_resource type="StyleBox" uid="uid://ds0nu587jypip" path="res://button.tres" id="3_cbffv"]
 [ext_resource type="Texture2D" uid="uid://cccyv1yxnw81c" path="res://assets/cardBack.png" id="3_oe8ih"]
 [ext_resource type="Texture2D" uid="uid://dq4ok611ibb5l" path="res://assets/coin.png" id="5_cbffv"]
@@ -298,7 +299,7 @@ _data = {
 &"fade_out": SubResource("Animation_ej4tk")
 }
 
-[sub_resource type="Shader" id="Shader_xuee5"]
+[sub_resource type="Shader" id="Shader_fbudy"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.6.3.stable's CanvasItemMaterial.
 
 shader_type canvas_item;
@@ -306,9 +307,9 @@ render_mode blend_mix,unshaded;
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smepj"]
-shader = SubResource("Shader_xuee5")
+shader = SubResource("Shader_fbudy")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbffv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45aep"]
 bg_color = Color(0.15686275, 0.011764706, 0.23529412, 0.83137256)
 border_width_left = 8
 border_width_top = 8
@@ -325,7 +326,7 @@ shadow_color = Color(0.11372549, 0.13333334, 0.6509804, 0.12156863)
 shadow_size = 1
 
 [sub_resource type="Theme" id="Theme_fbudy"]
-Panel/styles/panel = SubResource("StyleBoxFlat_cbffv")
+Panel/styles/panel = SubResource("StyleBoxFlat_45aep")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cbffv"]
 shader = ExtResource("5_smepj")
@@ -353,6 +354,10 @@ shadow_size = 2
 [node name="Gameplay" type="Node2D" unique_id=654875177]
 script = ExtResource("1_n4psk")
 
+[node name="Gameplaybg" type="Sprite2D" parent="." unique_id=1512963735]
+position = Vector2(128, 64)
+texture = ExtResource("2_fbudy")
+
 [node name="Goal" type="Label" parent="." unique_id=1729357669]
 self_modulate = Color(15.159422, 18.892157, 18.892157, 1)
 anchors_preset = 8
@@ -360,8 +365,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 33.0
 offset_top = 16.0
-offset_right = 48.0
+offset_right = 81.0
 offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -447,7 +453,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=404836542]
-offset_right = 48.0
+offset_left = 32.0
+offset_right = 80.0
 offset_bottom = 18.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_ej4tk")
@@ -460,7 +467,7 @@ vertical_alignment = 1
 libraries/ = SubResource("AnimationLibrary_oe8ih")
 
 [node name="CardBack" type="Sprite2D" parent="." unique_id=1529811085]
-position = Vector2(128, 24)
+position = Vector2(128, 20)
 texture = ExtResource("3_oe8ih")
 
 [node name="Finale" type="Panel" parent="." unique_id=478430239]
@@ -510,6 +517,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="coinImage" type="TextureRect" parent="Finale/tokenUps" unique_id=554830650]
+visible = false
 layout_mode = 0
 offset_left = -124.0
 offset_top = 37.0

@@ -78,7 +78,7 @@ func flipOver(card,value):
 	card.texture_normal = preload("res://assets/cardBack.png")
 	totalAmount -= value
 	card.disabled = true
-	totalLabel.text = str(totalAmount)
+	totalLabel.text = str(totalAmount) + "/" + str(max_power)
 
 func hold():
 	if totalAmount == max_power:

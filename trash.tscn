@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cu2mby41dgvgf"]
+
+[ext_resource type="Script" uid="uid://bkw20y6jhmopr" path="res://trash.gd" id="1_aet8u"]
+[ext_resource type="Texture2D" uid="uid://dujmtwo527dpl" path="res://assets/Trash.png" id="1_avkd5"]
+[ext_resource type="Texture2D" uid="uid://cccyv1yxnw81c" path="res://assets/cardBack.png" id="3_jixxp"]
+[ext_resource type="Texture2D" uid="uid://dq4ok611ibb5l" path="res://assets/coin.png" id="4_c82h1"]
+[ext_resource type="FontFile" uid="uid://bn05pg63nlltb" path="res://assets/PixelFont.png" id="5_aet8u"]
+
+[node name="trash" type="Node2D" unique_id=839612215]
+script = ExtResource("1_aet8u")
+
+[node name="Trash" type="Sprite2D" parent="." unique_id=1934952226]
+position = Vector2(128, 64)
+texture = ExtResource("1_avkd5")
+
+[node name="CardBack" type="Sprite2D" parent="." unique_id=1625516554]
+visible = false
+position = Vector2(228, 48)
+texture = ExtResource("3_jixxp")
+
+[node name="coinImage" type="TextureRect" parent="." unique_id=1388533506]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 30.0
+offset_bottom = 27.0
+texture = ExtResource("4_c82h1")
+stretch_mode = 4
+
+[node name="coinLabel" type="Label" parent="." unique_id=959629923]
+offset_left = 32.0
+offset_top = 6.0
+offset_right = 93.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("5_aet8u")
+theme_override_font_sizes/font_size = 19
+text = "0"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Exit" type="Button" parent="." unique_id=2072879560]
+offset_left = 168.0
+offset_top = 5.0
+offset_right = 253.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("5_aet8u")
+theme_override_font_sizes/font_size = 18
+text = "EXIT"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=496494382]

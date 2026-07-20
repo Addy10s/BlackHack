@@ -88,6 +88,9 @@ func check_tile_data():
 		elif type == "encounter":
 			Globals.playerPosition = global_position
 			get_tree().change_scene_to_file("res://gameplay.tscn")
+		elif type == "bossEncounter":
+			Globals.playerPosition = global_position
+			get_tree().change_scene_to_file("res://boss.tscn")
 		elif type == "coin":
 			Globals.tokens += 1
 			tile_map_layer.set_cell(map_pos,0, Vector2i(1,1))
@@ -95,8 +98,12 @@ func check_tile_data():
 
 		elif type == "shop":
 			Globals.playerPosition = global_position
-
 			get_tree().change_scene_to_file("res://shop.tscn")
+		
+		elif type == "trash":
+			Globals.playerPosition = global_position
+
+			get_tree().change_scene_to_file("res://trash.tscn")
 		else:
 			pass
 
