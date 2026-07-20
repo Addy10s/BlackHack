@@ -2,6 +2,8 @@
 > [!IMPORTANT]
 > ### This is an early demo of BlackHack, I have not finished this game yet.
 > #### This is built for submission to Horizons.hackclub.com, and ended up time-crunched, and thus is missing many large chunks, such as the story, and having multiple floors of the map.
+
+> Artificial intelligence was used in creating the game's movement system early on
 # BlackHack
 ![GitHub License](https://img.shields.io/github/license/addy10s/blackhack
 )
